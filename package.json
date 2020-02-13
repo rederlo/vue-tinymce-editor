@@ -1,6 +1,6 @@
 {
-  "name": "vue-tinymce-editor",
-  "version": "1.6.2",
+  "name": "vue-tinymce-text-editor",
+  "version": "1.6.3",
   "description": "This a component provides easy use of tinymce for vue developers",
   "author": "Roozbeh Hajizadeh <hajizadeh.roozbeh@gmail.com>",
   "private": false,
@@ -57,10 +57,10 @@
     "tinymce",
     "editor"
   ],
-  "homepage": "https://github.com/dyonir/vue-tinymce-editor/#readme",
+  "homepage": "https://github.com/rederlo/vue-tinymce-editor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dyonir/vue-tinymce-editor.git"
+    "url": "https://github.com/rederlo/vue-tinymce-editor"
   },
   "engines": {
     "node": ">= 4.0.0",
