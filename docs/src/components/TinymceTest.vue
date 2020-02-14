@@ -4,7 +4,7 @@
             <img id="vue-logo" src="../assets/logo.png">
             Easy use of tinymce in vue js
             <br>
-            <a class="btn btn-default" href="https://github.com/dyonir/vue-tinymce-editor">
+            <a class="btn btn-default" href="https://github.com/rederlo/vue-tinymce-text-editor">
                 <i class="fa fa-github"></i>
                 View on GitHub
             </a>
@@ -104,7 +104,7 @@ export default {
       options1:  { 'height': 300,
         codesample_content_css: 'static/plugins/codesample/css/prism.css',
         language_url: window.location.search.substring(1) &&  window.location.search.substring(1) != 'en_US' ?
-            (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080' : 'https://dyonir.github.io/vue-tinymce-editor/')
+            (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080' : 'https://github.com/rederlo/vue-tinymce-text-editor')
             + '/static/langs/' + window.location.search.substring(1) + '.js'  : ''  },
 
     }
@@ -113,7 +113,7 @@ export default {
   },
   watch:{
       language(value){
-          window.location = (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080/?' : 'https://dyonir.github.io/vue-tinymce-editor/?') + value
+          window.location = (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080/?' : 'https://github.com/rederlo/vue-tinymce-text-editor/?') + value
       }
   },
   mounted(){
