@@ -4,7 +4,7 @@
 
 ## Demo
 You can see a demo and an example in this page:
-[Demo & examples](https://dyonir.github.io/vue-tinymce-editor/)
+[Demo & examples](https://rederlo.github.io/vue-tinymce-text-editor)
 
 ## Instalation
 ```bash
