@@ -2,37 +2,43 @@
 
 > This a component provides easy use of tinymce for vue developers
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/roozbehhz) [![Donate](https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg)](https://www.buymeacoffee.com/roozbehhz)
 ## Demo
 You can see a demo and an example in this page:
 [Demo & examples](https://dyonir.github.io/vue-tinymce-editor/)
 
 ## Instalation
 ```bash
-$ npm install vue-tinymce-editor
+$ npm install vue-tinymce-text-editor
 ```
 
 ## How to use
 ```js
 import Vue from 'vue'
-import tinymce from 'vue-tinymce-editor'
+import tinymce from 'vue-tinymce-text-editor'
 Vue.component('tinymce', tinymce)
 ```
 
 
 You may use the component in your markup
 ```html
-<tinymce id="d1" v-model="data"></tinymce>
+<tinymce :id="id"  v-model="data" :other_options="options" :name="name"></tinymce>
 ```
 
 ```js
-export default{
-    data(){
-        return {
-            data : ''
-        };
+<script>
+    export default {
+        props: ['langs', 'id', 'height', 'name'],
+        data(){
+            return {
+                data : '',
+                options: {
+                    language_url: this.langs || '',
+                    height: this.height || 350
+                },
+            };
+        }
     }
-}
+</script>
 ```
 
 ## Properties
@@ -44,6 +50,7 @@ export default{
 | plugins | Array | `['advlist autolink lists link image charmap print preview hr anchor pagebreak', 'searchreplace wordcount visualblocks visualchars code fullscreen', 'insertdatetime media nonbreaking save table contextmenu directionality','template paste textcolor colorpicker textpattern imagetools toc help emoticons hr codesample']` | plugins of tinymce you need to load |
 | other_options | Array | {} | other tinymce options. you can also override our initial options |
 | readonly | Boolean | false | Enables or disables the Editor |
+| inline | Boolean | false | Enable inline mode |
 
 ## Events
 
@@ -67,27 +74,23 @@ export default{
         return {
             data : '',
             options: {
-                language_url: 'http://example.com/js/langs/fa_IR.js' //This url points to location of persian language file.
+                language_url: 'http://example.com/js/langs/pt_BR.js'
             }
         };
     }
 }
 ```
 ```html
-<tinymce id="d1" v-model="data" :other_options="options"></tinymce>
+<tinymce :id="id"  v-model="data" :other_options="options" :name="name"></tinymce>
 ```
 
 ## Direct access to tinymce editor
 You can access the tinymce itself by setting a ref to this component:
 ```html
-<tinymce id="d1" v-model="data" ref="tm"></tinymce>
+<tinymce id="d1" v-model="data" :name="name" ref="tm"></tinymce>
 ```
 Then you can access the editor by calling:
 
 ```js
 this.$refs.tm.editor
 ```
-
-## Donate
-If you like this project and it was useful for you don't let it die. Help me continue it. Thank you.
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/roozbehhz) or you can [buy me a coffee](https://www.buymeacoffee.com/roozbehhz) [![Donate](https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg)](https://www.buymeacoffee.com/roozbehhz)
