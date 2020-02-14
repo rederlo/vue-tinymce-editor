@@ -81,11 +81,22 @@
                                     ];
                                 } , type: Array
                             },
-                toolbar1: { default :'formatselect | bold italic  strikethrough  forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat', type: String},
+                toolbar1: { default :'formatselect | bold italic  strikethrough  forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | image | code', type: String},
                 toolbar2: { default : '', type: String },
                 other_options: { default : function() { return {}; }, type: Object},
                 readonly: { default: false, type: Boolean },
-                inline: { default: false, type: Boolean }
+                inline: { default: false, type: Boolean },
+
+                image_title: { default: true, type: Boolean },
+                automatic_uploads: { default: true, type: Boolean },
+                /*
+                  URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+                  images_upload_url: 'postAcceptor.php',
+                  here we add custom filepicker only to Image dialog
+                */
+                file_picker_types: { default: 'image', type: String },
+
+
         },
         data(){
             return {
@@ -128,6 +139,30 @@
                     toolbar1: this.toolbar1,
                     toolbar2: this.toolbar2,
                     plugins: this.plugins,
+                    image_title: this.image_title,
+                    automatic_uploads: this.automatic_uploads,
+                    file_picker_types: this.file_picker_types,
+                    file_picker_callback: function (cb, value, meta) {
+                      var input = document.createElement('input');
+                      input.setAttribute('type', 'file');
+                      input.setAttribute('accept', 'image/*');
+                      input.onchange = function () {
+                        var file = this.files[0];
+
+                        var reader = new FileReader();
+                        reader.onload = function () {
+                          var id = 'blobid' + (new Date()).getTime();
+                          var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                          var base64 = reader.result.split(',')[1];
+                          var blobInfo = blobCache.create(id, file, base64);
+                          blobCache.add(blobInfo);
+                          cb(blobInfo.blobUri(), { title: file.name });
+                        };
+                        reader.readAsDataURL(file);
+                      };
+
+                      input.click();
+                    },
                     init_instance_callback : this.initEditor
                 };
                 tinymce.init(this.concatAssciativeArrays(options, this.other_options));
