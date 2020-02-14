@@ -104,7 +104,7 @@ export default {
       options1:  { 'height': 300,
         codesample_content_css: 'static/plugins/codesample/css/prism.css',
         language_url: window.location.search.substring(1) &&  window.location.search.substring(1) != 'en_US' ?
-            (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080' : 'https://github.com/rederlo/vue-tinymce-text-editor')
+            (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080' : 'https://rederlo.github.io/vue-tinymce-text-editor/')
             + '/static/langs/' + window.location.search.substring(1) + '.js'  : ''  },
 
     }
@@ -113,7 +113,7 @@ export default {
   },
   watch:{
       language(value){
-          window.location = (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080/?' : 'https://github.com/rederlo/vue-tinymce-text-editor/?') + value
+          window.location = (window.location.hostname == 'http://localhost' ? window.location.hostname + ':8080/?' : 'https://rederlo.github.io/vue-tinymce-text-editor/?') + value
       }
   },
   mounted(){
